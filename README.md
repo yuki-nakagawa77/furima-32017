@@ -36,7 +36,7 @@ Things you may want to cover:
 | first_name           | string | null: false |
 | last_name(hurigana)  | string | null: false |
 | first_name(hurigana) | string | null: false |
-| date                 | string | null: false |
+| date                 | date   | null: false |
 
 ## items テーブル
 
@@ -45,12 +45,12 @@ Things you may want to cover:
 | user         | references | null: false |
 | product_name | string     | null: false |
 | explanation  | string     | null: false |
-| category     | string     | null: false |
-| status       | string     | null: false |
-| burden       | string     | null: false |
-| area         | string     | null: false |
-| days         | string     | null: false |
-| price        | string     | null: false |
+| category     | integer    | null: false |
+| status       | integer    | null: false |
+| burden       | integer    | null: false |
+| area         | integer    | null: false |
+| days         | integer    | null: false |
+| price        | integer    | null: false |
 
 ## order テーブル
 
@@ -58,7 +58,6 @@ Things you may want to cover:
 | ------------------ | ------ | ----------- |
 | user_id            | string | null: false |
 | item_id            | string | null: false |
-| image              | string | null: false |
 | product_name       | string | null: false |
 | explanation        | string | null: false |
 | price              | string | null: false |
@@ -66,12 +65,11 @@ Things you may want to cover:
 | prefectures        | string | null: false |
 | municipalities     | string | null: false |
 | address            | string | null: false |
-| building_name      | string | null: false |
+| building_name      | string |             |
 | phone_number       | string | null: false |
 
 ## order_history
 
 | Column             | Type   | Options     |
 | ------------------ | ------ | ----------- |
-| user_id            | string | null: false |
-| item_id            | string | null: false |
+|                    |        |             |
