@@ -38,6 +38,12 @@ Things you may want to cover:
 | first_name(hurigana) | string   | null: false |
 | date                 | birthday | null: false |
 
+### Association
+
+- has_many :item
+- has_many :order
+- has_many :order_history
+
 ## items テーブル
 
 | Column       | Type       | Options     |
@@ -52,6 +58,12 @@ Things you may want to cover:
 | days_id      | integer    | null: false |
 | price        | integer    | null: false |
 
+### Association
+
+- belongs_to :user
+- has_many :order
+- has_many :order_history
+
 ## orders テーブル
 
 | Column             | Type    | Options     |
@@ -65,9 +77,21 @@ Things you may want to cover:
 | building_name      | string  |             |
 | phone_number       | string  | null: false |
 
+### Association
+
+- belongs_to :user
+- has_many   :item
+- has_many   :order_history
+
 ## orders_history
 
 | Column             | Type   | Options     |
 | ------------------ | ------ | ----------- |
 | user_id            | string | null: false |
 | item_id            | string | null: false |
+
+### Association
+
+- belongs_to :user
+- has_many   :item
+- has_many   :order
