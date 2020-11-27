@@ -40,9 +40,9 @@ Things you may want to cover:
 
 ### Association
 
-- has_many :item
-- has_many :order
-- has_many :order_history
+- has_many :items
+- has_many :orders
+- has_many :orders_history
 
 ## items テーブル
 
@@ -61,15 +61,13 @@ Things you may want to cover:
 ### Association
 
 - belongs_to :user
-- has_many :order
-- has_many :order_history
+- has_one    :orders
+- has_many   :orders_history
 
 ## orders テーブル
 
 | Column             | Type    | Options     |
 | ------------------ | ------- | ----------- |
-| product_name       | string  | null: false |
-| explanation        | string  | null: false |
 | postal_code        | string  | null: false |
 | prefecture_id      | integer | null: false |
 | municipalities     | string  | null: false |
@@ -80,18 +78,18 @@ Things you may want to cover:
 ### Association
 
 - belongs_to :user
-- has_many   :item
-- has_many   :order_history
+- has_many   :items
+- belongs_to :orders_history
 
 ## orders_history
 
-| Column             | Type   | Options     |
-| ------------------ | ------ | ----------- |
-| user_id            | string | null: false |
-| item_id            | string | null: false |
+| Column             | Type   | Options           |
+| ------------------ | ------ | ----------------- |
+| user_id            | string | foreign_key: true |
+| item_id            | string | foreign_key: true |
 
 ### Association
 
-- belongs_to :user
-- has_many   :item
-- has_many   :order
+- belongs_to   :user
+- belongs_to   :items
+- has_many     :orders
