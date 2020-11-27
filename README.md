@@ -41,55 +41,52 @@ Things you may want to cover:
 ### Association
 
 - has_many :items
-- has_many :orders
-- has_many :orders_history
+- has_many :orders_historys
 
 ## items テーブル
 
-| Column       | Type       | Options     |
-| -----------  | ---------- | ----------- |
-| user         | references | null: false |
-| product_name | string     | null: false |
-| explanation  | string     | null: false |
-| category_id  | integer    | null: false |
-| status_id    | integer    | null: false |
-| burden_id    | integer    | null: false |
-| area_id      | integer    | null: false |
-| days_id      | integer    | null: false |
-| price        | integer    | null: false |
+| Column       | Type       | Options                      |
+| -----------  | ---------- | ---------------------------- |
+| user         | references | null: false,foreign_key:true |
+| product_name | string     | null: false                  |
+| explanation  | string     | null: false                  |
+| category_id  | integer    | null: false                  |
+| status_id    | integer    | null: false                  |
+| burden_id    | integer    | null: false                  |
+| area_id      | integer    | null: false                  |
+| days_id      | integer    | null: false                  |
+| price        | integer    | null: false                  |
 
 ### Association
 
 - belongs_to :user
-- has_one    :orders
-- has_many   :orders_history
+- has_one    :orders_history
 
 ## orders テーブル
 
-| Column             | Type    | Options     |
-| ------------------ | ------- | ----------- |
-| postal_code        | string  | null: false |
-| prefecture_id      | integer | null: false |
-| municipalities     | string  | null: false |
-| address            | string  | null: false |
-| building_name      | string  |             |
-| phone_number       | string  | null: false |
+| Column             | Type    | Options                   |
+| ------------------ | ------- | ------------------------- |
+| user         | references | null: false,foreign_key:true |
+| postal_code        | string  | null: false               |
+| prefecture_id      | integer | null: false               |
+| municipalities     | string  | null: false               |
+| address            | string  | null: false               |
+| building_name      | string  |                           |
+| phone_number       | string  | null: false               |
 
 ### Association
 
-- belongs_to :user
-- has_many   :items
 - belongs_to :orders_history
 
 ## orders_history
 
-| Column             | Type   | Options           |
-| ------------------ | ------ | ----------------- |
-| user_id            | string | foreign_key: true |
-| item_id            | string | foreign_key: true |
+| Column          | Type       | Options                       |
+| --------------- | ---------- | ----------------------------- |
+| user            | references | null: false,foreign_key: true |
+| item            | references | null: false,foreign_key: true |
 
 ### Association
 
-- belongs_to   :user
-- belongs_to   :items
-- has_many     :orders
+- belong_to   :user
+- belong_to   :items
+- has_one     :orders
