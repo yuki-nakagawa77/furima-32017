@@ -36,7 +36,7 @@ Things you may want to cover:
 | first_name          | string   | null: false |
 | last_name_hurigana  | string   | null: false |
 | first_name_hurigana | string   | null: false |
-| date                | date     | null: false |
+| birthday            | date     | null: false |
 
 ### Association
 
@@ -64,16 +64,15 @@ Things you may want to cover:
 
 ## orders テーブル
 
-| Column             | Type    | Options                         |
-| ------------------ | ------- | ------------------------------- |
-| user               | string  | null: false                     |
-| postal_code        | string  | null: false                     |
-| prefecture_id      | integer | null: false                     |
-| municipalities     | string  | null: false                     |
-| address            | string  | null: false                     |
-| building_name      | string  |                                 |
-| phone_number       | string  | null: false                     |
-| orders_history_id  | references | null: false,foreign_key:true |
+| Column             | Type       | Options                         |
+| ------------------ | ---------- | ------------------------------- |
+| postal_code        | string     | null: false                     |
+| prefecture_id      | integer    | null: false                     |
+| municipalities     | string     | null: false                     |
+| address            | string     | null: false                     |
+| building_name      | string     |                                 |
+| phone_number       | string     | null: false                     |
+| orders_history     | references | null: false,foreign_key:true |
 
 ### Association
 
