@@ -17,7 +17,7 @@ describe User do
     end
 
     context '新規登録がうまくいかないとき' do
-      it "\bnicknameが空だと登録できない" do
+      it "nicknameが空だと登録できない" do
         @user.nickname = ''
         @user.valid?
         expect(@user.errors.full_messages).to include("Nickname can't be blank")
@@ -33,7 +33,6 @@ describe User do
         another_user.valid?
         expect(another_user.errors.full_messages).to include('Email has already been taken')
       end
-
       it '@がないとemailが登録できない' do
         @user.email = 'testexample'
         @user.valid?
@@ -44,6 +43,11 @@ describe User do
         @user.password_confirmation = '00000'
         @user.valid?
         expect(@user.errors.full_messages).to include('Password is too short (minimum is 6 characters)')
+      end
+      it 'passwordは半角英数字混合でなければ登録できない' do
+        @user.email = 'testexample'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Email is invalid')
       end
       it 'passwordが存在してもpassword_confirmationが空では登録できない' do
         @user.password_confirmation = ''
@@ -94,27 +98,6 @@ describe User do
         @user.birthday = ''
         @user.valid?
         expect(@user.errors.full_messages).to include("Birthday can't be blank")
-      end
-    end
-  end
-
-  describe 'ユーザーのログイン' do
-    context 'ログインがうまくいくとき' do
-      it 'emailとパスワードが存在すればログインできる' do
-        expect(@user).to be_valid
-      end
-    end
-
-    context 'ログインがうまくいかないとき' do
-      it 'emailが空ではログインできない' do
-        @user.email = ''
-        @user.valid?
-        expect(@user.errors.full_messages).to include("Email can't be blank")
-      end
-      it 'passwordが空ではログインできない' do
-        @user.password = ''
-        @user.valid?
-        expect(@user.errors.full_messages).to include("Password can't be blank")
       end
     end
   end
