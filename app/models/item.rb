@@ -11,15 +11,15 @@ class Item < ApplicationRecord
   has_one    :orders_history
   has_one_attached :image
 
-  with_options presence: true do
+  with_options presence: true, numericality: { other_than: 1 } do
     validates :image
     validates :product_name
     validates :explanation
-    validates :category_id, numericality: { other_than: 1 }
-    validates :status_id, numericality: { other_than: 1 }
-    validates :burden_id, numericality: { other_than: 1 }
-    validates :area_id, numericality: { other_than: 1 }
-    validates :day_id, numericality: { other_than: 1 }
+    validates :category_i 
+    validates :status_id
+    validates :burden_id
+    validates :area_id
+    validates :day_id
     validates :price, inclusion: { in: 300..9999999 }, format: { with: /\A[0-9]+\z/ }
   end
 end
