@@ -67,8 +67,18 @@ describe Item do
           @item.valid?
           expect(@item.errors.full_messages).to include("Price is not included in the list")
       end
-      it "販売価格は半角数字でないと出品できない" do
+      it "販売価格は半角数字でないと出品できない（全角）" do
         @item.price = 'ふりがな'
+          @item.valid?
+          expect(@item.errors.full_messages).to include("Price is not included in the list")
+      end
+      it "販売価格は半角数字でないと出品できない（半角英語）" do
+        @item.price = 'ａ'
+          @item.valid?
+          expect(@item.errors.full_messages).to include("Price is not included in the list")
+      end
+      it "販売価格は半角数字でないと出品できない（半角英数混合）" do
+        @item.price = 'ａ３００'
           @item.valid?
           expect(@item.errors.full_messages).to include("Price is not included in the list")
       end
