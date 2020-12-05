@@ -43,7 +43,6 @@ class ItemsController < ApplicationController
       redirect_to action: :index
     end
     @item.destroy
-    redirect_to root_path
   end
 
 
