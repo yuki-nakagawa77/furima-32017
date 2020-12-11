@@ -8,7 +8,7 @@ class Item < ApplicationRecord
   
 
   belongs_to :user
-  has_one    :orders_history
+  has_one    :order_history
   has_one_attached :image
 
   with_options presence: true do
