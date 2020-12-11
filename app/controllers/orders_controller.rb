@@ -1,5 +1,7 @@
 class OrdersController < ApplicationController
 
+  before_action :data, only: [:index, :create]
+
   def index
     @order = OrderAddress.new
     @item = Item.find(params[:item_id])
@@ -31,4 +33,9 @@ class OrdersController < ApplicationController
       currency: 'jpy'
     )
   end
+
+  def data
+    @item = Item.find(params[:item_id])
+  end 
+
 end

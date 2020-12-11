@@ -2,15 +2,20 @@ class OrderAddress
   include ActiveModel::Model
   attr_accessor :postal_code, :area_id, :municipalities, :address, :building_name, :phone_number, :user_id, :item_id, :token
 
-
+  
   validates :postal_code, format: { with: /\A\d{3}[-]\d{4}\z/ }
   validates :area_id, numericality: { other_than: 1 }
-  validates :municipalities, presence: true
-  validates :address, presence: true
   validates :phone_number, format: { with: /\A\d{11}\z/ }
-  validates :user_id, presence: true
-  validates :item_id, presence: true
-  validates :token, presence: true
+
+  
+  with_options presence: true do
+    validates :municipalities
+    validates :address
+    validates :user_id
+    validates :item_id
+    validates :token
+  end
+
 
 
   def save
