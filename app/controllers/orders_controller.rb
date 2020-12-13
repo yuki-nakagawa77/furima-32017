@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
 
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index]
   before_action :data, only: [:index, :create]
 
   def index
