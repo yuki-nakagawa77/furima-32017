@@ -1,9 +1,14 @@
 class OrdersController < ApplicationController
 
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :data, only: [:index, :create]
 
   def index
-    @order = OrderAddress.new
+    if current_user.id == @item.user_id || @item.order_history != nil
+      redirect_to root_path
+    else
+      @order = OrderAddress.new
+    end
   end
 
   def create
