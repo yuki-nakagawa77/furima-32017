@@ -6,6 +6,9 @@ class User < ApplicationRecord
   has_many :items
   has_many :orders_historys
 
+  VALID_PASSWORD_REGEX =/\A(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[\d])\w{6,12}\z/
+    validates :password, format: { with: VALID_PASSWORD_REGEX }
+  
   with_options presence: true do
     validates :nickname 
     validates :last_name, format: { with: /\A[ぁ-んァ-ン一-龥]+\z/ }
