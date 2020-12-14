@@ -6,8 +6,8 @@ class User < ApplicationRecord
   has_many :items
   has_many :orders_historys
 
-  VALID_PASSWORD_REGEX =/\A(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[\d])\w{6,12}\z/
-    validates :password, format: { with: VALID_PASSWORD_REGEX }
+  VALID_PASSWORD_REGEX =/\A(?=.*?[a-z])(?=.*?[\d])\w{6,12}\z/
+  validates :password, format: { with: VALID_PASSWORD_REGEX }
   
   with_options presence: true do
     validates :nickname 
